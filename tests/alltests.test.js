@@ -21,13 +21,14 @@ test.after.always((t) => {
   t.context.server.close();
 });
 
+// DELETE /authors/{authorId}
 test("DELETE /authors/{authorId}", async (t) => {
     const authorId = 0;
     const response = await t.context.got.delete(`authors/${authorId}`);
     t.is(response.statusCode, 200);
 });
 
-
+// GET /authors/{authorId}
 test("GET /authors/{authorId}", async (t) => {
     const authorId = 0;
     const response = await t.context.got.get(`authors/${authorId}`);
@@ -37,7 +38,7 @@ test("GET /authors/{authorId}", async (t) => {
     t.is(response.body.id, 0);
 });
 
-
+// PUT /authors/{authorId}
 test("PUT /authors/{authorId}", async (t) => {
     const authorId = 0;
     const requestbody = { name: "lala"};
@@ -49,7 +50,7 @@ test("PUT /authors/{authorId}", async (t) => {
     t.is(response.body.id, 0);
 });
 
-
+// GET /authors
 test("GET /authors", async (t) => {
     const response = await t.context.got.get(`authors`);
     t.is(response.statusCode, 200);
@@ -59,7 +60,7 @@ test("GET /authors", async (t) => {
     t.is(response.body[0].id, 0);
 });
 
-
+// POST /authors
 test("POST /authors", async (t) => {
     const requestbody = { name: "lala"};
 
@@ -70,14 +71,14 @@ test("POST /authors", async (t) => {
     t.is(response.body.id, 0);
 });
 
-
+// DELETE /books/{bookId}
 test("DELETE /books/{bookId}", async (t) => {
     const bookId = 0;
     const response = await t.context.got.delete(`books/${bookId}`);
     t.is(response.statusCode, 200);
 });
 
-
+// GET /books/{bookId}
 test("GET /books/{bookId}", async (t) => {
     const bookId = 0;
     const response = await t.context.got.get(`books/${bookId}`);
@@ -97,7 +98,7 @@ test("GET /books/{bookId}", async (t) => {
     });
 });
 
-
+// PUT /books/{bookId}
 test("PUT /books/{bookId}", async (t) => {
     const bookId = 0;
     const requestBody = { 
@@ -118,7 +119,7 @@ test("PUT /books/{bookId}", async (t) => {
     });
 });
 
-
+//GET /books
 test("GET /books", async (t) => {
     const response = await t.context.got.get(`books`);
     t.is(response.statusCode, 200);
@@ -138,6 +139,7 @@ test("GET /books", async (t) => {
     });
 });
 
+//POST /books
 test("POST /books", async (t) => {
     const requestBody = { 
         title: "new title",
@@ -157,6 +159,8 @@ test("POST /books", async (t) => {
     });
 });
 
+
+//DELETE /categories/{categoryId}
 test("DELETE /categories/{categoryId}", async (t) => {
     const categoryId = 0;
     const response = await t.context.got.delete(`categories/${categoryId}`);
@@ -164,6 +168,7 @@ test("DELETE /categories/{categoryId}", async (t) => {
 });
 
 
+// GET /categories/{categoryId}
 test("GET /categories/{categoryId}", async (t) => {
     const categoryId = 0;
     const response = await t.context.got.get(`categories/${categoryId}`);
@@ -175,7 +180,7 @@ test("GET /categories/{categoryId}", async (t) => {
     });
 });
 
-
+// PUT /categories/{categoryId}
 test("PUT /categories/{categoryId}", async (t) => {
     const categoryId = 0;
     const requestBody = { 
@@ -191,6 +196,7 @@ test("PUT /categories/{categoryId}", async (t) => {
     });
 });
 
+// GET /categories
 test("GET /categories", async (t) => {
     const response = await t.context.got.get(`categories`);
     t.is(response.statusCode, 200);
@@ -203,7 +209,7 @@ test("GET /categories", async (t) => {
 });
 
 
-
+// POST /categories
 test("POST /categories", async (t) => {
     const requestBody = {
         name: "new name"
